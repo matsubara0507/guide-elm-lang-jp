@@ -7,6 +7,7 @@ jobs:
     - stage: check diff evancz/guide.elm-lang.org
       # if: branch = master AND type IN (cron)
       script:
+        - git checkout 11d30ee5f70dc71912e5858b7d144163054b79c4 # todo
         - git remote add evancz https://github.com/evancz/guide.elm-lang.org.git
         - git fetch evancz
-        - git diff HEAD...evancz/master --name-only && exit 1
+        - git diff HEAD...evancz/master --name-only
