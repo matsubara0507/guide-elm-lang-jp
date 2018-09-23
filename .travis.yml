@@ -1,0 +1,11 @@
+sudo: false
+language: generic
+cache:
+  timeout: 360
+jobs:
+  include:
+    - stage: check diff evancz/guide.elm-lang.org
+      # if: branch = master AND type IN (cron)
+      script:
+        - git remote add evancz https://github.com/evancz/guide.elm-lang.org.git
+        - git diff HEAD...evancz/master --name-only && exit 1
