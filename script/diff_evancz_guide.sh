@@ -7,7 +7,7 @@ TRAVIS_BUILD_URL="https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUIL
 
 echo ${DIFF_FILES}
 
-if test -z ${DIFF_FILES}; then
+if test -z "${DIFF_FILES}"; then
   curl \
     -H "Content-Type: application/json" \
     -X POST \
