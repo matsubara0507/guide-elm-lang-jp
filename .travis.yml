@@ -11,11 +11,4 @@ jobs:
         - git remote add evancz https://github.com/evancz/guide.elm-lang.org.git
         - git fetch evancz
         - git diff HEAD...evancz/master --quiet || exit 1
-      after_failure: |
-        DIFF_FILES=`git diff HEAD...evan/master --name-only | sed -e 's/^/\\\\\\\\n/' | xargs echo` \
-        TRAVIS_BUILD_URL="https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}" \
-        curl \
-          -H "Content-Type: application/json" \
-          -X POST \
-          -d "{\"content\": \"以下のファイルで原文の更新がありました。${DIFF_FILES} \n${TRAVIS_BUILD_URL}\"}" \
-          DISCORD_WEBHOOK_URL
+      after_failure: notify_discord_script.sh
