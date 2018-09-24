@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -eux
+
 git checkout 11d30ee5f70dc71912e5858b7d144163054b79c4 # todo
 git remote add evancz https://github.com/evancz/guide.elm-lang.org.git
 git fetch evancz
@@ -7,7 +11,7 @@ TRAVIS_BUILD_URL="https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUIL
 
 echo ${DIFF_FILES}
 
-if test -z "${DIFF_FILES}"; then
+if test -n "${DIFF_FILES}"; then
   curl \
     -H "Content-Type: application/json" \
     -X POST \
