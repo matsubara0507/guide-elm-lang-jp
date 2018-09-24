@@ -9,8 +9,6 @@ git fetch evancz
 DIFF_FILES=`git diff HEAD...evancz/master --name-only | sed -e 's/^/\\\\\\\\n/' | xargs echo`
 TRAVIS_BUILD_URL="https://travis-ci.org/${TRAVIS_REPO_SLUG}/builds/${TRAVIS_BUILD_ID}"
 
-echo ${DIFF_FILES}
-
 if test -n "${DIFF_FILES}"; then
   curl \
     -H "Content-Type: application/json" \
